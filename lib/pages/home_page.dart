@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
         height: 130,
         // color: Colors.red,
         decoration: BoxDecoration(
-          color: menuModel.isSelected ? Colors.orange : Colors.white,
+          color: menuModel.isSelected ? Color(0xffFFD964) : Colors.white,
           borderRadius: BorderRadius.circular(25.0),
           border: Border.all(
             color: menuModel.isSelected ? Colors.white : Colors.black,
