@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:statefullappg9/widgets/item_deport_widget.dart';
 
 class FavoriteDeportsPage extends StatelessWidget {
-  Widget itemDeportWidget() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        // color: Colors.red,
-        border: Border.all(color: Colors.orange, width: 2),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Text(
-        "Gimnasio",
-        style: TextStyle(fontSize: 18),
-      ),
-    );
-  }
+  // Widget itemDeportWidget() {
+  //   return Container(
+  //     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+  //     decoration: BoxDecoration(
+  //       // color: Colors.red,
+  //       border: Border.all(color: Colors.orange, width: 2),
+  //       borderRadius: BorderRadius.circular(10),
+  //     ),
+  //     child: Text(
+  //       "Gimnasio",
+  //       style: TextStyle(fontSize: 18),
+  //     ),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +44,10 @@ class FavoriteDeportsPage extends StatelessWidget {
               runSpacing: 8,
               alignment: WrapAlignment.center,
               children: [
-                itemDeportWidget(),
-                itemDeportWidget(),
-                itemDeportWidget(),
-                itemDeportWidget(),
-                itemDeportWidget(),
+                ItemDeportWidget(),
+                ItemDeportWidget(),
+                ItemDeportWidget(),
+                ItemDeportWidget(),
               ],
             ),
           ],
