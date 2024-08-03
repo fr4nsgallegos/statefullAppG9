@@ -53,6 +53,7 @@ class _FavoriteDeportsPageState extends State<FavoriteDeportsPage> {
                         }
                         setState(() {});
                       },
+                      isOnFavoriteListContainer: false,
                     )
                 ],
               ),
@@ -84,6 +85,7 @@ class _FavoriteDeportsPageState extends State<FavoriteDeportsPage> {
                     ItemDeportWidget(
                       deporte: favoriteDeportList[i],
                       onTap: () {},
+                      isOnFavoriteListContainer: true,
                     ),
                 ],
               ),
