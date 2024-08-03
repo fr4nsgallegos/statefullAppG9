@@ -2,22 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:statefullappg9/models/deport_model.dart';
 import 'package:statefullappg9/widgets/item_deport_widget.dart';
 
-class FavoriteDeportsPage extends StatelessWidget {
-  // Widget itemDeportWidget(String deportName) {
-  //   return Container(
-  //     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-  //     decoration: BoxDecoration(
-  //       // color: Colors.red,
-  //       border: Border.all(color: Colors.orange, width: 2),
-  //       borderRadius: BorderRadius.circular(10),
-  //     ),
-  //     child: Text(
-  //       "Gimnasio",
-  //       style: TextStyle(fontSize: 18),
-  //     ),
-  //   );
-  // }
+class FavoriteDeportsPage extends StatefulWidget {
+  @override
+  State<FavoriteDeportsPage> createState() => _FavoriteDeportsPageState();
+}
 
+class _FavoriteDeportsPageState extends State<FavoriteDeportsPage> {
+  // Widget itemDeportWidget(String deportName) {
   List<DeportModel> favoriteDeportList = [DeportModel("Exjemplko", true)];
 
   @override
@@ -52,6 +43,11 @@ class FavoriteDeportsPage extends StatelessWidget {
                   for (int i = 0; i < deportModelList.length; i++)
                     ItemDeportWidget(
                       deporte: deportModelList[i],
+                      onTap: () {
+                        deportModelList[i].isFavorite = true;
+                        favoriteDeportList.add(deportModelList[i]);
+                        setState(() {});
+                      },
                     )
                 ],
               ),
@@ -80,7 +76,10 @@ class FavoriteDeportsPage extends StatelessWidget {
                 spacing: 8,
                 children: [
                   for (int i = 0; i < favoriteDeportList.length; i++)
-                    ItemDeportWidget(deporte: favoriteDeportList[i]),
+                    ItemDeportWidget(
+                      deporte: favoriteDeportList[i],
+                      onTap: () {},
+                    ),
                 ],
               ),
             )
