@@ -70,7 +70,7 @@ class _FavoriteDeportsPageState extends State<FavoriteDeportsPage> {
             Container(
               padding: EdgeInsets.all(16),
               width: double.infinity,
-              height: 300,
+              height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
                 // color: Colors.red,
                 borderRadius: BorderRadius.circular(25),
