@@ -84,7 +84,11 @@ class _FavoriteDeportsPageState extends State<FavoriteDeportsPage> {
                   for (int i = 0; i < favoriteDeportList.length; i++)
                     ItemDeportWidget(
                       deporte: favoriteDeportList[i],
-                      onTap: () {},
+                      onTap: () {
+                        favoriteDeportList[i].isFavorite = false;
+                        favoriteDeportList.remove(favoriteDeportList[i]);
+                        setState(() {});
+                      },
                       isOnFavoriteListContainer: true,
                     ),
                 ],
