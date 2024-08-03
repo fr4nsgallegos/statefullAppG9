@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:statefullappg9/widgets/item_deport_widget.dart';
 
 class FavoriteDeportsPage extends StatelessWidget {
-  // Widget itemDeportWidget() {
+  // Widget itemDeportWidget(String deportName) {
   //   return Container(
   //     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
   //     decoration: BoxDecoration(
@@ -44,10 +44,21 @@ class FavoriteDeportsPage extends StatelessWidget {
               runSpacing: 8,
               alignment: WrapAlignment.center,
               children: [
-                ItemDeportWidget(),
-                ItemDeportWidget(),
-                ItemDeportWidget(),
-                ItemDeportWidget(),
+                ItemDeportWidget(
+                  deportName: "Futbol",
+                ),
+                ItemDeportWidget(
+                  deportName: "Voley",
+                ),
+                ItemDeportWidget(
+                  deportName: "Baloncesto",
+                ),
+                ItemDeportWidget(
+                  deportName: "Golf",
+                ),
+                ItemDeportWidget(
+                  deportName: "Golf",
+                ),
               ],
             ),
           ],

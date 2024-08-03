@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ItemDeportWidget extends StatelessWidget {
+  String deportName;
+  ItemDeportWidget({required this.deportName});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,7 +14,7 @@ class ItemDeportWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(
-        "Gimnasio",
+        deportName,
         style: TextStyle(fontSize: 18),
       ),
     );
