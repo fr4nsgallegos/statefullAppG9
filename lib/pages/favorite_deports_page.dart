@@ -29,7 +29,7 @@ class _FavoriteDeportsPageState extends State<FavoriteDeportsPage> {
           children: [
             Text(
               "¿Cuáles son tus deportes favoritos?",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 16,
@@ -65,7 +65,7 @@ class _FavoriteDeportsPageState extends State<FavoriteDeportsPage> {
             ),
             Text(
               "Mis deportes favoritos son:",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Container(
               padding: EdgeInsets.all(16),
