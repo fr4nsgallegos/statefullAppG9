@@ -18,6 +18,8 @@ class FavoriteDeportsPage extends StatelessWidget {
   //   );
   // }
 
+  List<DeportModel> favoriteDeportList = [DeportModel("Exjemplko", true)];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,6 +66,7 @@ class FavoriteDeportsPage extends StatelessWidget {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             Container(
+              padding: EdgeInsets.all(16),
               width: double.infinity,
               height: 300,
               decoration: BoxDecoration(
@@ -71,7 +74,15 @@ class FavoriteDeportsPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(25),
                 border: Border.all(width: 2, color: Colors.black),
               ),
-              child: Wrap(),
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                runSpacing: 8,
+                spacing: 8,
+                children: [
+                  for (int i = 0; i < favoriteDeportList.length; i++)
+                    ItemDeportWidget(deporte: favoriteDeportList[i]),
+                ],
+              ),
             )
           ],
         ),
