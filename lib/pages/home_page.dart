@@ -1,68 +1,81 @@
 import 'package:flutter/material.dart';
 import 'package:statefullappg9/models/menu_model.dart';
 
-class HomePage extends StatelessWidget {
-  Widget menuContainer(String name, String days, String price, String image) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 16),
-      padding: EdgeInsets.all(8),
-      width: double.infinity,
-      height: 130,
-      // color: Colors.red,
-      decoration: BoxDecoration(
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  Widget menuContainer(MenuModel menuModel) {
+    return GestureDetector(
+      onTap: () {
+        print(menuModel.isSelected);
+        menuModel.isSelected = true;
+        print(menuModel.isSelected);
+        setState(() {});
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: 16),
+        padding: EdgeInsets.all(8),
+        width: double.infinity,
+        height: 130,
         // color: Colors.red,
-        borderRadius: BorderRadius.circular(25.0),
-        border: Border.all(
-          color: Colors.black,
-          width: 2,
+        decoration: BoxDecoration(
+          color: menuModel.isSelected ? Colors.orange : Colors.white,
+          borderRadius: BorderRadius.circular(25.0),
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
+          ),
         ),
-      ),
-      child: Row(
-        children: [
-          //PRIMERA FORMA DE COLOCAR UNA IMAGEN REDONDEADA DE INTERNET
-          Container(
-            width: 120,
-            height: 150,
-            decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.circular(15),
-              image: DecorationImage(
-                image: NetworkImage(
-                  image,
+        child: Row(
+          children: [
+            //PRIMERA FORMA DE COLOCAR UNA IMAGEN REDONDEADA DE INTERNET
+            Container(
+              width: 120,
+              height: 150,
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(15),
+                image: DecorationImage(
+                  image: NetworkImage(
+                    menuModel.urlImage,
+                  ),
+                  fit: BoxFit.cover,
                 ),
-                fit: BoxFit.cover,
               ),
             ),
-          ),
-          //SEGUNDA  FORMA DE COLOCAR UNA IMAGEN REDONDEADA DE INTERNET
-          // ClipRRect(
-          //   borderRadius: BorderRadius.circular(25),
-          //   child: Image.network(
-          //     "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          //   ),
-          // ),
-          SizedBox(
-            width: 16,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                name,
-                style: TextStyle(fontSize: 25),
-              ),
-              Text(
-                days,
-                style: TextStyle(fontSize: 22),
-              ),
-              Text(
-                "S/. $price",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ],
+            //SEGUNDA  FORMA DE COLOCAR UNA IMAGEN REDONDEADA DE INTERNET
+            // ClipRRect(
+            //   borderRadius: BorderRadius.circular(25),
+            //   child: Image.network(
+            //     "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            //   ),
+            // ),
+            SizedBox(
+              width: 16,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  menuModel.name,
+                  style: TextStyle(fontSize: 25),
+                ),
+                Text(
+                  menuModel.days,
+                  style: TextStyle(fontSize: 22),
+                ),
+                Text(
+                  "S/. ${menuModel.price}",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -95,18 +108,11 @@ class HomePage extends StatelessWidget {
                   listMenu.length,
                   (index) {
                     return menuContainer(
-                      listMenu[index].name,
-                      listMenu[index].days,
-                      listMenu[index].price,
-                      listMenu[index].urlImage,
+                      listMenu[index],
                     );
                   },
                 ),
               )
-              // menuContainer(),
-              // menuContainer(),
-              // menuContainer(),
-              // menuContainer(),
             ],
           ),
         ),
