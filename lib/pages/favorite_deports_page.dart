@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:statefullappg9/models/deport_model.dart';
 import 'package:statefullappg9/widgets/item_deport_widget.dart';
 
 class FavoriteDeportsPage extends StatelessWidget {
@@ -29,8 +30,9 @@ class FavoriteDeportsPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "¿Cuáles son tus deportes favoritos?",
@@ -39,28 +41,38 @@ class FavoriteDeportsPage extends StatelessWidget {
             SizedBox(
               height: 16,
             ),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              alignment: WrapAlignment.center,
-              children: [
-                ItemDeportWidget(
-                  deportName: "Futbol",
-                ),
-                ItemDeportWidget(
-                  deportName: "Voley",
-                ),
-                ItemDeportWidget(
-                  deportName: "Baloncesto",
-                ),
-                ItemDeportWidget(
-                  deportName: "Golf",
-                ),
-                ItemDeportWidget(
-                  deportName: "Golf",
-                ),
-              ],
+            Center(
+              child: Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                alignment: WrapAlignment.center,
+                children: [
+                  for (int i = 0; i < deportModelList.length; i++)
+                    ItemDeportWidget(
+                      deporte: deportModelList[i],
+                    )
+                ],
+              ),
             ),
+            Divider(
+              color: Colors.black,
+              height: 40,
+              thickness: 2,
+            ),
+            Text(
+              "Mis deportes favoritos son:",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            Container(
+              width: double.infinity,
+              height: 300,
+              decoration: BoxDecoration(
+                // color: Colors.red,
+                borderRadius: BorderRadius.circular(25),
+                border: Border.all(width: 2, color: Colors.black),
+              ),
+              child: Wrap(),
+            )
           ],
         ),
       ),

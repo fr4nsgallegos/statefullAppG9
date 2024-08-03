@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:statefullappg9/models/deport_model.dart';
 
 class ItemDeportWidget extends StatelessWidget {
-  String deportName;
-  ItemDeportWidget({required this.deportName});
+  DeportModel deporte;
+  ItemDeportWidget({required this.deporte});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class ItemDeportWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(
-        deportName,
+        deporte.name,
         style: TextStyle(fontSize: 18),
       ),
     );
