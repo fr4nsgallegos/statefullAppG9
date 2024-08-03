@@ -9,7 +9,7 @@ class FavoriteDeportsPage extends StatefulWidget {
 
 class _FavoriteDeportsPageState extends State<FavoriteDeportsPage> {
   // Widget itemDeportWidget(String deportName) {
-  List<DeportModel> favoriteDeportList = [DeportModel("Exjemplko", true)];
+  List<DeportModel> favoriteDeportList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +44,13 @@ class _FavoriteDeportsPageState extends State<FavoriteDeportsPage> {
                     ItemDeportWidget(
                       deporte: deportModelList[i],
                       onTap: () {
-                        deportModelList[i].isFavorite = true;
-                        favoriteDeportList.add(deportModelList[i]);
+                        if (deportModelList[i].isFavorite == false) {
+                          deportModelList[i].isFavorite = true;
+                          favoriteDeportList.add(deportModelList[i]);
+                        } else {
+                          deportModelList[i].isFavorite = false;
+                          favoriteDeportList.remove(deportModelList[i]);
+                        }
                         setState(() {});
                       },
                     )
