@@ -7,13 +7,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Widget menuContainer(MenuModel menuModel) {
+  int? selectedMenuIndex;
+
+  Widget menuContainer(MenuModel menuModel, int index) {
+    menuModel.isSelected = selectedMenuIndex == index;
     return GestureDetector(
       onTap: () {
-        print(menuModel.isSelected);
-        menuModel.isSelected = true;
-        print(menuModel.isSelected);
+        selectedMenuIndex = menuModel.isSelected == true ? null : index;
         setState(() {});
+        // print(menuModel.isSelected);
+        // menuModel.isSelected = !menuModel.isSelected;
+        // print(menuModel.isSelected);
+        // setState(() {});
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 16),
@@ -25,7 +30,7 @@ class _HomePageState extends State<HomePage> {
           color: menuModel.isSelected ? Colors.orange : Colors.white,
           borderRadius: BorderRadius.circular(25.0),
           border: Border.all(
-            color: Colors.black,
+            color: menuModel.isSelected ? Colors.white : Colors.black,
             width: 2,
           ),
         ),
@@ -62,15 +67,25 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Text(
                   menuModel.name,
-                  style: TextStyle(fontSize: 25),
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: menuModel.isSelected ? Colors.white : Colors.black,
+                  ),
                 ),
                 Text(
                   menuModel.days,
-                  style: TextStyle(fontSize: 22),
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: menuModel.isSelected ? Colors.white : Colors.black,
+                  ),
                 ),
                 Text(
                   "S/. ${menuModel.price}",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: menuModel.isSelected ? Colors.white : Colors.black,
+                  ),
                 ),
               ],
             ),
@@ -107,9 +122,7 @@ class _HomePageState extends State<HomePage> {
                 children: List.generate(
                   listMenu.length,
                   (index) {
-                    return menuContainer(
-                      listMenu[index],
-                    );
+                    return menuContainer(listMenu[index], index);
                   },
                 ),
               )
