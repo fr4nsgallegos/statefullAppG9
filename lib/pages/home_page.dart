@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:statefullappg9/models/menu_model.dart';
 
 class HomePage extends StatelessWidget {
-  Widget menuContainer() {
+  Widget menuContainer(String name, String days, String price, String image) {
     return Container(
       margin: EdgeInsets.only(bottom: 16),
       padding: EdgeInsets.all(8),
@@ -27,7 +28,7 @@ class HomePage extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
                 image: NetworkImage(
-                  "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                  image,
                 ),
                 fit: BoxFit.cover,
               ),
@@ -48,15 +49,15 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "Menú 1",
+                name,
                 style: TextStyle(fontSize: 25),
               ),
               Text(
-                "Lun - Mier - Vier",
+                days,
                 style: TextStyle(fontSize: 22),
               ),
               Text(
-                "S/. 5",
+                "S/. $price",
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
             ],
@@ -89,8 +90,23 @@ class HomePage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              menuContainer(),
-              menuContainer(),
+              Column(
+                children: List.generate(
+                  listMenu.length,
+                  (index) {
+                    return menuContainer(
+                      listMenu[index].name,
+                      listMenu[index].days,
+                      listMenu[index].price,
+                      listMenu[index].urlImage,
+                    );
+                  },
+                ),
+              )
+              // menuContainer(),
+              // menuContainer(),
+              // menuContainer(),
+              // menuContainer(),
             ],
           ),
         ),
